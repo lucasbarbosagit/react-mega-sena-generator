@@ -1,0 +1,16 @@
+.numberMega {
+    margin: 1rem auto;
+    width: 5%;
+    height: 10%;
+    text-align: center;
+    font-size: 40px;
+  }
+
+  .cardsitems {
+    display: flex;
+  }
+
+  .buttonMega {
+    display: flex;
+    justify-content: center;
+  }
