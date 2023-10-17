@@ -4,19 +4,24 @@ import Button from "./UI/Button";
 import Card from "./UI/Card";
 
 const AddNumber = (props) => {
- const [num,setNum] = useState('');
+ const [num,setNum] = useState([1,2,3,4,5,6]);
 
    function getNumber() {
       const number = Math.floor(Math.random() * (60 - 1 + 1) + 1);
-    return number;
+      return number;
    }
- 
-   const getNumbers = () => {
-    setNum([getNumber(),getNumber(),getNumber(),getNumber(),getNumber(),getNumber()]);
-   // console.log(num);
-    props.onAddNumber(num);
-   // setNum('');
-   }
+
+   function getNumbers() {
+    const max = 60;
+    const quantity = 6;
+    const randSet = new Set();
+    while(randSet.size < quantity) {
+      randSet.add(Math.floor(Math.random() * max) + 1);
+    }
+    let randNum = Array.from(randSet);
+    setNum(randNum);
+    props.onAddNumber(randNum);
+  }
 
   return (
     <div>
@@ -29,7 +34,8 @@ const AddNumber = (props) => {
    <Card className={classes.numberMega}>{num[5]}</Card>
    </div>
    <div className={classes.buttonMega}>
-   <Button onClick={getNumbers}>gerar numeros</Button>
+   <Button onClick={getNumbers}>Gerar Números</Button>
+   <Button onClick={getNumbers}>Gerar Números por Quadrante</Button>
    </div>
    </div>
   );

@@ -1,0 +1,8 @@
+.counter {
+    color: white;
+    display: flex;
+    justify-content: flex-end;
+    margin: 2rem auto;
+    width: 90%;
+    max-width: 40rem;
+}

@@ -14,3 +14,16 @@
     margin: 0.5rem 0;
     padding: 0.5rem;
   }
+
+  .deletebtn{
+    cursor: pointer;
+  }
+
+  .editbtn{
+    cursor: pointer;
+  }
+
+  .deletebtnlink{
+   display: flex;
+   justify-content: space-between;
+  }
