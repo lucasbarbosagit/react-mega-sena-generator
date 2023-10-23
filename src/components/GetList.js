@@ -9,7 +9,7 @@ const GetList = (props) => {
     <Card className={classes.numbers}>
       <ul>
         {props.numbers.map((number) => (
-          <li key={number.id} className={classes.deletebtnlink}>
+         <li key={number.id} className={classes.deletebtnlink}>
             {number.num[0]}, {number.num[1]}, {number.num[2]}, {number.num[3]}, {number.num[4]}, {number.num[5]}
                 <div>
                 <EditIcon className={classes.editbtn}></EditIcon>

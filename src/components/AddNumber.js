@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import classes from './AddNumber.module.css';
 import Button from "./UI/Button";
 import Card from "./UI/Card";
+import CountUp from 'react-countup';
 
 const AddNumber = (props) => {
  const [num,setNum] = useState([1,2,3,4,5,6]);
@@ -23,19 +24,71 @@ const AddNumber = (props) => {
     props.onAddNumber(randNum);
   }
 
+
+
+
   return (
     <div>
     <div className={classes.cardsitems}>
-   <Card className={classes.numberMega}>{num[0]}</Card>
-   <Card className={classes.numberMega}>{num[1]}</Card>
-   <Card className={classes.numberMega}>{num[2]}</Card>
-   <Card className={classes.numberMega}>{num[3]}</Card>
-   <Card className={classes.numberMega}>{num[4]}</Card>
-   <Card className={classes.numberMega}>{num[5]}</Card>
+    <CountUp start={0} end={num[0]} delay={0}>
+      {({ countUpRef}) => (
+      <div>
+        <Card className={classes.numberMega}>
+          <span ref={countUpRef} />
+        </Card>
+      </div>
+     )}
+   </CountUp>
+   <CountUp start={0} end={num[1]} delay={0}>
+      {({ countUpRef}) => (
+      <div>
+        <Card className={classes.numberMega}>
+          <span ref={countUpRef} />
+        </Card>
+      </div>
+     )}
+   </CountUp>
+   <CountUp start={0} end={num[2]} delay={0}>
+      {({ countUpRef}) => (
+      <div>
+        <Card className={classes.numberMega}>
+          <span ref={countUpRef} />
+        </Card>
+      </div>
+     )}
+   </CountUp>
+   <CountUp start={0} end={num[3]} delay={0}>
+      {({ countUpRef}) => (
+      <div>
+        <Card className={classes.numberMega}>
+          <span ref={countUpRef} />
+        </Card>
+      </div>
+     )}
+   </CountUp>
+   <CountUp start={0} end={num[4]} delay={0}>
+      {({ countUpRef}) => (
+      <div>
+        <Card className={classes.numberMega}>
+          <span ref={countUpRef} />
+        </Card>
+      </div>
+     )}
+   </CountUp>
+   <CountUp start={0} end={num[5]} delay={0}>
+      {({ countUpRef}) => (
+      <div>
+        <Card className={classes.numberMega}>
+          <span ref={countUpRef} />
+        </Card>
+      </div>
+     )}
+   </CountUp>
    </div>
+   
    <div className={classes.buttonMega}>
-   <Button onClick={getNumbers}>Gerar Números</Button>
-   <Button onClick={getNumbers}>Gerar Números por Quadrante</Button>
+   <Button onClick={getNumbers}>Gerar Aposta</Button>
+   <Button onClick={getNumbers}>Gerar Aposta por Quadrante</Button>
    </div>
    </div>
   );

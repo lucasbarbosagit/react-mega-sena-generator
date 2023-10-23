@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 1rem auto;
+    margin: 1rem 1rem;
     width: 8rem;
     height: 8rem;
     text-align: center;
@@ -12,6 +12,7 @@
   .cardsitems {
     margin-bottom: 40px;
     display: flex;
+    justify-content: center;
   }
 
   .buttonMega {

@@ -5,7 +5,8 @@ import classes from './Header.module.css';
 const Header = (props) => {
   return (
    <div className={classes.Header}>
-    <h1>Gerador de Números da Mega Sena</h1>
+    <div className={classes.img}>
+    </div>
    </div>
   );
 };
