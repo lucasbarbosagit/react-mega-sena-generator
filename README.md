@@ -5,4 +5,4 @@ Programa criado para gerar aleatoriamente numeros entre 1 a 60 em uma lista para
 
 **Screenshot of the App**
 
-![Screenshot of the App](public/megasenagen_ss.png "Screenshot of the App")
+![Screenshot of the App](public/megasenagenerator_ss.png "Screenshot of the App")
