@@ -1,25 +1,37 @@
 .numbers {
+    display: flex;
     margin: 2rem auto;
     width: 90%;
-    max-width: 40rem;
   }
   
   .numbers ul {
+    display: flex;
+    flex-wrap: wrap;
     list-style: none;
-    padding: 1rem;
+   
   }
   
   .numbers li {
+    display: flex;
+    align-items: center;
+    color: black;
+    background: #ffffff;
     border: 1px solid #ccc;
-    margin: 0.5rem 0;
+    height: 60px;
+    width: 400px;
+    margin-right: 20px;
+    margin-bottom: 20px;
     padding: 0.5rem;
+    border-radius: 10px;
   }
 
   .deletebtn{
+    color: #F2CF66;
     cursor: pointer;
   }
 
   .editbtn{
+    color: #F2CF66;
     cursor: pointer;
   }
 

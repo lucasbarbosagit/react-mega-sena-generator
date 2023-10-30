@@ -14,25 +14,30 @@ function App() {
     setMegalist((prevMegaList) => {
       return [
         ...prevMegaList,
-        {num: uNumber, id: Math.random().toString()},
+        {num: uNumber, id: Math.random().toString(), isEditing: false},
       ];
     });
+    console.log(megaList);
     setCount(megaList.length+1);
    };
-  
+
+
   const handleRemove = (id) => {
     const newMega = megaList.filter((number) => number.id !== id);
     setMegalist(newMega);
     setCount(megaList.length-1);
  };
+ 
 
   return (
     <div>
     <Header></Header>
     <AddNumber onAddNumber={addNumberHandler}></AddNumber>
     <Counter count={count}></Counter>
-    {megaList.length > 0 ? <GetList numbers={megaList} onRemove={handleRemove}/> : <ListEmpty/>}
-
+      { megaList.length > 0 ? (
+          <GetList numbers={megaList} onRemove={handleRemove}/>)
+          : ( <ListEmpty/>)
+      }
     <Footer></Footer>
     </div>
   );

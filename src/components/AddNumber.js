@@ -24,9 +24,6 @@ const AddNumber = (props) => {
     props.onAddNumber(randNum);
   }
 
-
-
-
   return (
     <div>
     <div className={classes.cardsitems}>
@@ -76,7 +73,7 @@ const AddNumber = (props) => {
      )}
    </CountUp>
    <CountUp start={0} end={num[5]} delay={0}>
-      {({ countUpRef}) => (
+      {({ countUpRef }) => (
       <div>
         <Card className={classes.numberMega}>
           <span ref={countUpRef} />

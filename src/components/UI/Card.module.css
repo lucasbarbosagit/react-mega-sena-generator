@@ -1,6 +1,8 @@
 .card {
     background: white;
-    border-radius: 10px;
-    border: 5px solid #F2CF66;
+   
     color:black;
+    background: black;
+    border-radius: 100%;
+    background: radial-gradient(circle at 100px 100px, #ffffff,  #F2CF66);
   }
