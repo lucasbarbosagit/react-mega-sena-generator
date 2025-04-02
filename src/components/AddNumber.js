@@ -1,93 +1,59 @@
 import React, { useState } from "react";
-import classes from './AddNumber.module.css';
+import classes from "./AddNumber.module.css";
 import Button from "./UI/Button";
 import Card from "./UI/Card";
-import CountUp from 'react-countup';
+import CountUp from "react-countup";
 
 const AddNumber = (props) => {
- const [num,setNum] = useState([1,2,3,4,5,6]);
+  const [num, setNum] = useState([1, 2, 3, 4, 5, 6]);
 
-   function getNumber() {
-      const number = Math.floor(Math.random() * (60 - 1 + 1) + 1);
-      return number;
-   }
+  // Função para buscar números aleatórios quânticos da API ANU QRNG
+  async function getQuantumNumbers() {
+    try {
+      const response = await fetch(
+        "https://qrng.anu.edu.au/API/jsonI.php?length=6&type=uint8"
+      );
+      const data = await response.json();
 
-   function getNumbers() {
-    const max = 60;
-    const quantity = 6;
-    const randSet = new Set();
-    while(randSet.size < quantity) {
-      randSet.add(Math.floor(Math.random() * max) + 1);
+      if (!data.success) {
+        throw new Error("Erro ao obter números quânticos");
+      }
+
+      // Converte os números para o intervalo de 1 a 60 e evita repetições
+      const randSet = new Set();
+      while (randSet.size < 6) {
+        const numero = (data.data[randSet.size] % 60) + 1;
+        randSet.add(numero);
+      }
+
+      const randNum = Array.from(randSet).sort((a, b) => a - b);
+      setNum(randNum);
+      props.onAddNumber(randNum);
+    } catch (error) {
+      console.error("Falha ao gerar números quânticos:", error);
     }
-    let randNum = Array.from(randSet);
-    setNum(randNum);
-    props.onAddNumber(randNum);
   }
 
   return (
     <div>
-    <div className={classes.cardsitems}>
-    <CountUp start={0} end={num[0]} delay={0}>
-      {({ countUpRef}) => (
-      <div>
-        <Card className={classes.numberMega}>
-          <span ref={countUpRef} />
-        </Card>
+      <div className={classes.cardsitems}>
+        {num.map((n, index) => (
+          <CountUp key={index} start={0} end={n} delay={0}>
+            {({ countUpRef }) => (
+              <div>
+                <Card className={classes.numberMega}>
+                  <span ref={countUpRef} />
+                </Card>
+              </div>
+            )}
+          </CountUp>
+        ))}
       </div>
-     )}
-   </CountUp>
-   <CountUp start={0} end={num[1]} delay={0}>
-      {({ countUpRef}) => (
-      <div>
-        <Card className={classes.numberMega}>
-          <span ref={countUpRef} />
-        </Card>
+
+      <div className={classes.buttonMega}>
+        <Button onClick={getQuantumNumbers}>Gerar Aposta Quântica</Button>
       </div>
-     )}
-   </CountUp>
-   <CountUp start={0} end={num[2]} delay={0}>
-      {({ countUpRef}) => (
-      <div>
-        <Card className={classes.numberMega}>
-          <span ref={countUpRef} />
-        </Card>
-      </div>
-     )}
-   </CountUp>
-   <CountUp start={0} end={num[3]} delay={0}>
-      {({ countUpRef}) => (
-      <div>
-        <Card className={classes.numberMega}>
-          <span ref={countUpRef} />
-        </Card>
-      </div>
-     )}
-   </CountUp>
-   <CountUp start={0} end={num[4]} delay={0}>
-      {({ countUpRef}) => (
-      <div>
-        <Card className={classes.numberMega}>
-          <span ref={countUpRef} />
-        </Card>
-      </div>
-     )}
-   </CountUp>
-   <CountUp start={0} end={num[5]} delay={0}>
-      {({ countUpRef }) => (
-      <div>
-        <Card className={classes.numberMega}>
-          <span ref={countUpRef} />
-        </Card>
-      </div>
-     )}
-   </CountUp>
-   </div>
-   
-   <div className={classes.buttonMega}>
-   <Button onClick={getNumbers}>Gerar Aposta</Button>
-   <Button onClick={getNumbers}>Gerar Aposta por Quadrante</Button>
-   </div>
-   </div>
+    </div>
   );
 };
 
